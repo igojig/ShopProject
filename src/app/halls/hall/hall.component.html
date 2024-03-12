@@ -1,0 +1,28 @@
+<h2 class="mb-3 text-center">Список концертных залов</h2>
+<div class="container text-center mb-1 bd-highlight">
+  <button class="btn btn-primary btn-sm" [routerLink]="['/halls/add']">Добавить</button>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Название</th>
+    <th scope="col">Адрес</th>
+    <th scope="col">Действие</th>
+    <th scope="col">Создан</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let hall of hallDto">
+    <td>{{hall.id}}</td>
+    <td>{{hall.name}}</td>
+    <td>{{hall.address}}</td>
+    <td>
+       <span class="edit btn-danger btn-sm btn" (click)="onDelete(hall.id)">Delete</span>
+      <span class="edit btn-success btn-sm btn" [routerLink]="['/halls/edit',hall.id]">Edit</span>
+    </td>
+    <td>{{hall.createdAt}}</td>
+  </tr>
+  </tbody>
+</table>

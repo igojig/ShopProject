@@ -1,0 +1,21 @@
+
+
+<div class="mb-3 p-2" *ngIf="hallDto.length>0" >
+  <label for="selectHall" class="form-label">Выберите концернтый зал</label>
+  <select class="form-select" [size]="length"  aria-label="Multiple select example" id="selectHall"
+          [(ngModel)]="selectedHallId" (ngModelChange)="onModelChange()">
+    <!--  <option selected>Open this select menu</option>-->
+<!--    <option [selected]="hallDto[0]" ></option>-->
+    <option *ngFor="let hall of hallDto" [value]="hall.id">{{hall.name}}</option>
+  </select>
+</div>
+<div class="mb-3 p-2" *ngIf="hallDto.length==0">
+  <div class="text-danger" >
+    <h4>Список залов пуст.</h4>
+  </div>
+</div>
+
+
+<!--<app-location-rooms [hallId]="selectedHallId"></app-location-rooms>-->
+<router-outlet></router-outlet>
+

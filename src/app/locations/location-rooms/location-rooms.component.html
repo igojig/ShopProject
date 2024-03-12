@@ -1,0 +1,46 @@
+<!--<p>location-rooms works!</p>-->
+<!--<div >-->
+<!--  HallId={{hallId}}-->
+<!--</div>-->
+<div *ngIf="locationDtos.length==0">
+  <h3  class="text-center text-danger">Список помещений пуст</h3>
+  <div class="container text-center mb-1 bd-highlight">
+    <button class="btn btn-primary btn-sm"  [routerLink]="['add']" >Добавить</button>
+  </div>
+</div>
+
+<div *ngIf="locationDtos.length>0" class="container col-11">
+  <h3  class="mb-3 text-center">Список помещений</h3>
+  <div class="container text-center mb-1 bd-highlight">
+    <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название</th>
+      <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let room of locationDtos">
+      <td>{{room.id}}</td>
+      <td>{{room.name}}</td>
+      <td>
+          <span class="edit btn-danger btn-sm btn" (click)="onDelete(room.id)"  >Delete</span>
+        &nbsp;
+        <span class="edit btn-success btn-sm btn"  [routerLink]="['edit', room.id]" >Edit</span>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
+
+<!--<app-location-add-rooms *ngIf="isAdd" (newLocationDtoOk)="onAddFromChild($event)"></app-location-add-rooms>-->
+<!--<app-location-edit-rooms *ngIf="isEdit" [locationId]="editableLocationId" (updatedLocationDto)="onEditFromChild($event)"></app-location-edit-rooms>-->
+
+
+
