@@ -11,6 +11,7 @@ import {LocationComponent} from "./locations/location/location.component";
 import {LocationRoomsComponent} from "./locations/location-rooms/location-rooms.component";
 import {LocationEditRoomsComponent} from "./locations/location-edit-rooms/location-edit-rooms.component";
 import {LocationAddRoomsComponent} from "./locations/location-add-rooms/location-add-rooms.component";
+import {EventListComponent} from "./events/event-list/event-list.component";
 
 const routes: Routes = [
   {
@@ -27,16 +28,20 @@ const routes: Routes = [
   },
   {
     path: 'halls',
-    component: HallComponent
+    component: HallComponent,
+      children: [
+        {path: 'edit/:id', component: HallUpdateComponent},
+        {path: 'add', component: HallAddComponent}
+      ]
   },
-  {
-    path: 'halls/add',
-    component: HallAddComponent
-  },
-  {
-    path: 'halls/edit/:id',
-    component: HallUpdateComponent
-  },
+  // {
+  //   path: 'halls/add',
+  //   component: HallAddComponent
+  // },
+  // {
+  //   path: 'halls/edit/:id',
+  //   component: HallUpdateComponent
+  // },
   {
     path: 'rooms',
     component: LocationComponent,
@@ -49,6 +54,9 @@ const routes: Routes = [
         ]
       }
     ]
+  },
+  {
+    path: 'events', component: EventListComponent
   },
 
 

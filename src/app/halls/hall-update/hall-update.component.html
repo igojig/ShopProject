@@ -7,6 +7,7 @@
     <input type="text" [(ngModel)]="hallDto.address" class="form-control" placeholder="Адрес">
   </div>
   <div class="form-group">
-    <button class="btn btn-success btn-lg btn-block btn-sm" (click)="onUpdate(hallDto)">Обновить</button>
+    <button class="btn btn-success  btn-block btn-sm" (click)="onUpdate()">Обновить</button>
+    <button class="btn btn-secondary btn-block btn-sm" (click)="onCancel()">Отменить</button>
   </div>
 </div>

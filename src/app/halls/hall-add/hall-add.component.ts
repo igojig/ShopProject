@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HallDto} from "../../dtos/hallDto";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HallRestService} from "../../services/hall-rest.service";
 import {HallComponent} from "../hall/hall.component";
 
@@ -9,17 +9,28 @@ import {HallComponent} from "../hall/hall.component";
   templateUrl: './hall-add.component.html',
   styleUrls: ['./hall-add.component.css']
 })
-export class HallAddComponent {
-
+export class HallAddComponent implements OnInit{
   hall: HallDto ={};
 
-  constructor(private router: Router, private rest: HallRestService) {
+
+  constructor(private router: Router, private rest: HallRestService, private actRouter: ActivatedRoute) {
   }
 
-  onAdd(hall: HallDto){
-    this.rest.add(hall).subscribe((result: HallDto)=>{
-      this.router.navigate(['/halls'])
+  ngOnInit(): void {
+
+  }
+
+  onAdd(){
+    this.rest.add(this.hall).subscribe((result: HallDto)=>{
+      this.navigateToParent(true);
     })
   }
 
+  onCancel() {
+    this.navigateToParent(false);
+  }
+
+  navigateToParent(update: boolean){
+    this.router.navigate(['halls'], {queryParams:{update: update}})
+  }
 }

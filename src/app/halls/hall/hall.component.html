@@ -1,6 +1,6 @@
 <h2 class="mb-3 text-center">Список концертных залов</h2>
 <div class="container text-center mb-1 bd-highlight">
-  <button class="btn btn-primary btn-sm" [routerLink]="['/halls/add']">Добавить</button>
+  <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>
 </div>
 
 <table class="table">
@@ -20,9 +20,11 @@
     <td>{{hall.address}}</td>
     <td>
        <span class="edit btn-danger btn-sm btn" (click)="onDelete(hall.id)">Delete</span>
-      <span class="edit btn-success btn-sm btn" [routerLink]="['/halls/edit',hall.id]">Edit</span>
+      <span class="edit btn-success btn-sm btn" [routerLink]="['edit',hall.id]">Edit</span>
     </td>
     <td>{{hall.createdAt}}</td>
   </tr>
   </tbody>
 </table>
+
+<router-outlet></router-outlet>

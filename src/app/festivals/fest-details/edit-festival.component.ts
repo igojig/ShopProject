@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FestivalDto} from "../festival-component/festival.component";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {FestivalRestService} from "../../services/festival-rest.service";
+import {FestivalDto} from "../../dtos/festivalDto";
 
 @Component({
   selector: 'app-fest-edit',

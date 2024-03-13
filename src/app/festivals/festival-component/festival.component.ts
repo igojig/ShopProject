@@ -1,20 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FestivalRestService} from "../../services/festival-rest.service";
 import {Router} from "@angular/router";
+import {FestivalDto} from "../../dtos/festivalDto";
 
 
-export interface FestivalDto {
-
-
-
-  // constructor(id: bigint, name: string) {
-  //   this.id=id;
-  //   this.name=name;
-  // }
-  id?: number;
-  name?: string;
-  createdAt?: Date
-}
 
 @Component({
   selector: 'app-festival-component',

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {FestivalDto} from "../festivals/festival-component/festival.component";
+import {FestivalDto} from "../dtos/festivalDto";
+
 
 @Injectable({
   providedIn: 'root'
