@@ -1,6 +1,6 @@
 
 export interface FestivalDto {
-  id?: number;
-  name?: string;
-  createdAt?: Date
+  id: number,
+  name: string,
+  createdAt: Date
 }

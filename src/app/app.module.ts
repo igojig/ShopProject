@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FestivalComponent} from './festivals/festival-component/festival.component';
 import {FormsModule} from "@angular/forms";
-import {EditFestivalComponent} from './festivals/fest-details/edit-festival.component';
+import {EditFestivalComponent} from './festivals/edit-festival/edit-festival.component';
 import {AddFestivalComponent} from './festivals/add-festival/add-festival.component';
 import {MenuComponent} from './menu/menu.component';
 import {RouterLinkActive} from "@angular/router";

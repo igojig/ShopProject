@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FestivalComponent} from "./festivals/festival-component/festival.component";
-import {EditFestivalComponent} from "./festivals/fest-details/edit-festival.component";
+import {EditFestivalComponent} from "./festivals/edit-festival/edit-festival.component";
 import {AddFestivalComponent} from "./festivals/add-festival/add-festival.component";
 import {HallComponent} from "./halls/hall/hall.component";
 import {AboutComponent} from "./about/about.component";
@@ -16,23 +16,27 @@ import {EventListComponent} from "./events/event-list/event-list.component";
 const routes: Routes = [
   {
     path: 'festivals',
-    component: FestivalComponent
+    component: FestivalComponent,
+    children: [
+      {path: 'edit/:id', component: EditFestivalComponent},
+      {path: 'add', component: AddFestivalComponent}
+    ]
   },
-  {
-    path: 'festivals/edit/:id',
-    component: EditFestivalComponent
-  },
-  {
-    path: 'festivals/add',
-    component: AddFestivalComponent
-  },
+  // {
+  //   path: 'festivals/edit/:id',
+  //   component: EditFestivalComponent
+  // },
+  // {
+  //   path: 'festivals/add',
+  //   component: AddFestivalComponent
+  // },
   {
     path: 'halls',
     component: HallComponent,
-      children: [
-        {path: 'edit/:id', component: HallUpdateComponent},
-        {path: 'add', component: HallAddComponent}
-      ]
+    children: [
+      {path: 'edit/:id', component: HallUpdateComponent},
+      {path: 'add', component: HallAddComponent}
+    ]
   },
   // {
   //   path: 'halls/add',

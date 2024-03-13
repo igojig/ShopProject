@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FestivalRestService} from "../../services/festival-rest.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FestivalDto} from "../../dtos/festivalDto";
-
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -10,17 +10,29 @@ import {FestivalDto} from "../../dtos/festivalDto";
   templateUrl: './festival.component.html',
   styleUrls: ['./festival.component.css']
 })
-export class FestivalComponent implements OnInit{
+export class FestivalComponent implements OnInit {
 
-  festivalDtos: FestivalDto[] = [];
+  festivalDtos: FestivalDto[];
+  subToParam: Subscription;
 
-  constructor(private rest:FestivalRestService,
-              private router: Router) {
+  constructor(private rest: FestivalRestService,
+              private router: Router,
+              private actRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
-
+    console.log(this.festivalDtos);
     this.getFestivals();
+    console.log(this.festivalDtos);
+    this.subToParam = this.actRoute.queryParamMap.subscribe(param => {
+      let id = param.get('update');
+      console.log(id);
+      if (id == 'true') {
+        console.log(" request from subscription");
+        this.getFestivals();
+      }
+    })
   }
 
   public getFestivals() {
@@ -31,7 +43,7 @@ export class FestivalComponent implements OnInit{
         console.log(response);
         this.festivalDtos = response;
       },
-      error: error =>{
+      error: error => {
         console.error('GET Request failed with error')
         alert(error);
       },
@@ -43,21 +55,20 @@ export class FestivalComponent implements OnInit{
     console.log(id);
     this.rest.delete(id)
       .subscribe(
-
-          (response) => {                           //Next callback
-            console.log('response received')
-            console.log(response);
-            // this.festivalDtos = response;
-            // console.log(this.repos);
-            this.getFestivals();
-          },
-            (error) => {                              //Error callback
-              console.error('Request failed with error')
-              alert(error);
-            },
-            () => {                                   //Complete callback
-              console.log('Request completed')
-            }
+        (response) => {                           //Next callback
+          console.log('response received')
+          console.log(response);
+          // this.festivalDtos = response;
+          // console.log(this.repos);
+          this.getFestivals();
+        },
+        (error) => {                              //Error callback
+          console.error('Request failed with error')
+          alert(error);
+        },
+        () => {                                   //Complete callback
+          console.log('Request completed')
+        }
       );
   }
 }
