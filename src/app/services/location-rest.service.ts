@@ -13,7 +13,7 @@ export class LocationRestService {
 
 
   public getByHallId(id: number){
-   return this.http.get(this.baseUrl + '/halls/' + id + '/rooms');
+   return this.http.get<LocationDto[]>(this.baseUrl + '/halls/' + id + '/rooms');
   }
 
   public deleteById(id: number){

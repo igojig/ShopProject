@@ -22,7 +22,7 @@ export class HallComponent implements OnInit, OnDestroy {
     this.getHalls();
     this.subToParamUpdate = this.actRoute.queryParamMap.subscribe(param => {
       let p = param.get('update');
-      if (p) {
+      if (p=='true') {
         this.getHalls();
       }
     })

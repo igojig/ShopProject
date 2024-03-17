@@ -3,6 +3,8 @@ import {FestivalRestService} from "../../services/festival-rest.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FestivalDto} from "../../dtos/festivalDto";
 import {Subscription} from 'rxjs';
+import {EventRestService} from "../../services/event-rest.service";
+import {EventDto} from "../../dtos/eventDto";
 
 
 @Component({
@@ -15,9 +17,12 @@ export class FestivalComponent implements OnInit {
   festivalDtos: FestivalDto[];
   subToParam: Subscription;
 
+  testEventDto: EventDto;
+
   constructor(private rest: FestivalRestService,
               private router: Router,
-              private actRoute: ActivatedRoute
+              private actRoute: ActivatedRoute,
+              private eventRest: EventRestService
   ) {
   }
 
@@ -36,6 +41,8 @@ export class FestivalComponent implements OnInit {
   }
 
   public getFestivals() {
+
+    this.test();
 
     return this.rest.getAll().subscribe({
       next: response => {
@@ -70,5 +77,12 @@ export class FestivalComponent implements OnInit {
           console.log('Request completed')
         }
       );
+  }
+
+  public test(){
+    this.eventRest.getById(9).subscribe(resp=>{
+      this.testEventDto=resp;
+      console.log(this.testEventDto);
+    })
   }
 }

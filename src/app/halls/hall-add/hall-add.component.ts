@@ -9,8 +9,8 @@ import {HallComponent} from "../hall/hall.component";
   templateUrl: './hall-add.component.html',
   styleUrls: ['./hall-add.component.css']
 })
-export class HallAddComponent implements OnInit{
-  hall: HallDto ={};
+export class HallAddComponent implements OnInit {
+  hall: HallDto = {id: null, name: '', address: '', createdAt: null};
 
 
   constructor(private router: Router, private rest: HallRestService, private actRouter: ActivatedRoute) {
@@ -20,8 +20,8 @@ export class HallAddComponent implements OnInit{
 
   }
 
-  onAdd(){
-    this.rest.add(this.hall).subscribe((result: HallDto)=>{
+  onAdd() {
+    this.rest.add(this.hall).subscribe((result: HallDto) => {
       this.navigateToParent(true);
     })
   }
@@ -30,7 +30,7 @@ export class HallAddComponent implements OnInit{
     this.navigateToParent(false);
   }
 
-  navigateToParent(update: boolean){
-    this.router.navigate(['halls'], {queryParams:{update: update}})
+  navigateToParent(update: boolean) {
+    this.router.navigate(['halls'], {queryParams: {update: update}})
   }
 }

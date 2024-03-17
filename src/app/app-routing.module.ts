@@ -12,6 +12,8 @@ import {LocationRoomsComponent} from "./locations/location-rooms/location-rooms.
 import {LocationEditRoomsComponent} from "./locations/location-edit-rooms/location-edit-rooms.component";
 import {LocationAddRoomsComponent} from "./locations/location-add-rooms/location-add-rooms.component";
 import {EventListComponent} from "./events/event-list/event-list.component";
+import {EventAddComponent} from "./events/event-add/event-add.component";
+import {EventEditComponent} from "./events/event-edit/event-edit.component";
 
 const routes: Routes = [
   {
@@ -60,7 +62,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'events', component: EventListComponent
+    path: 'events', component: EventListComponent,
+      children:[
+        {path: 'add', component: EventAddComponent},
+        {path: 'edit/:id', component: EventEditComponent}
+      ]
   },
 
 
@@ -73,7 +79,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {anchorScrolling: "enabled"})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

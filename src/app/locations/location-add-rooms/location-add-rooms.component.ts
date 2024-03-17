@@ -3,6 +3,8 @@ import {LocationDto} from "../../dtos/locationDto";
 import {ActivatedRoute, Router} from "@angular/router";
 import { Subscription } from 'rxjs';
 import {LocationRestService} from "../../services/location-rest.service";
+import {HallDto} from "../../dtos/hallDto";
+import {HallRestService} from "../../services/hall-rest.service";
 
 @Component({
   selector: 'app-location-add-rooms',
@@ -15,15 +17,21 @@ export class LocationAddRoomsComponent implements OnInit, OnDestroy {
 
   // newLocationDtoOk: EventEmitter<LocationDto> = new EventEmitter<LocationDto>();
   hallId: number;
-  locationDto: LocationDto = {};
+  locationDto: LocationDto = {id: null, name: '', hallDto:null};
   subToHallId: Subscription;
+  hallDto: HallDto;
 
-  constructor(private actRoute:ActivatedRoute, private rest: LocationRestService, private router: Router) {
+  constructor(private actRoute:ActivatedRoute,
+              private rest: LocationRestService,
+              private router: Router,
+              private hallRestService: HallRestService
+  ) {
   }
 
   ngOnInit(): void {
       this.subToHallId=this.actRoute.parent.params.subscribe(param =>{
         this.hallId=param['id'];
+        this.getHall();
       })
   }
 
@@ -39,6 +47,13 @@ export class LocationAddRoomsComponent implements OnInit, OnDestroy {
     // this.locationDto=null;
     // this.newLocationDtoOk.emit(this.locationDto);
     this.navigateToParent(false);
+  }
+
+  getHall(){
+    this.hallRestService.getOne(this.hallId).subscribe(resp=>{
+      this.hallDto=resp;
+      this.locationDto.hallDto=this.hallDto;
+    })
   }
 
   navigateToParent(update: boolean){

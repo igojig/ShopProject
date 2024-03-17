@@ -18,7 +18,7 @@ export class FestivalRestService {
   }
 
   public getOne(id: number){
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get<FestivalDto>(`${this.baseUrl}/${id}`);
   }
 
   public add(fest: FestivalDto){

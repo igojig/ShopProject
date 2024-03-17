@@ -37,7 +37,7 @@ export class LocationRoomsComponent implements OnInit , OnDestroy{
       this.subToParam=this.actRoute.queryParamMap.subscribe(params=>{
         let p = params.get('update');
         console.log("Paramentr"+p);
-        if(p){
+        if(p=='true'){
           this.getRoomsByHallId();
         }
       });

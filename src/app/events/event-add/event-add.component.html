@@ -1,0 +1,64 @@
+
+<div id="top" class="container">
+
+
+  <form #eventForm="ngForm" class="border-top" novalidate>
+    <div class="row justify-content-start gap-3">
+      <div class="col-4">
+        <label for="selFestival" class="form-label">Фестиваль</label>
+        <select id="selFestival" class="form-select" name="festId" ngModel
+                (ngModelChange)="onFestivalChange($event)" required>
+          <option *ngFor="let fest of festivalDtos" [value]="fest.id">{{ fest.name }}</option>
+
+        </select>
+      </div>
+
+      <div class="col-4">
+        <label for="selHall" class="form-label">Концертный зал</label>
+        <select id="selHall" class="form-select" name="hallId" ngModel
+                (ngModelChange)="onHallChange($event)" required>
+          <option *ngFor="let hall of hallDtos" [value]="hall.id">{{ hall.name }}</option>
+
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-start gap-3">
+      <div class="col-4">
+        <label for="selRoom" class="form-label">Помещение</label>
+        <select id="selRoom" class="form-select" name="roomId" ngModel
+                (ngModelChange)="onLocationChange($event)" [disabled]="locationDtos.length==0" required>
+          <option *ngFor="let room of locationDtos" [value]="room.id">{{ room.name }}</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <label for="selDate" class="form-label">Дата начала</label>
+        <input class="form-control" id="selDate" type="date" name="startDate" ngModel
+               (ngModelChange)="onDateChange()" required>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-start gap-3">
+      <div class="col-6">
+        <label for="selName" class="form-label">Название</label>
+        <input type="text" class="form-control" id="selName" name="name" ngModel required>
+      </div>
+    </div>
+
+    <div class="row justify-content-start mt-3">
+      <div class="col-auto">
+        <button class="btn btn-primary form-control" type="button" [disabled]="!eventForm.valid"  (click)="onAdd(eventForm)">Добавить</button>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-secondary form-control" type="button" (click)="onCancel()">Отменить</button>
+      </div>
+
+    </div>
+
+  </form>
+</div>
+
+
+

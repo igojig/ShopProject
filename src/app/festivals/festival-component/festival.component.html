@@ -8,19 +8,28 @@
 <!--  </div>-->
 
 <!--</div>-->
-<div class="container col-10 mt-5">
+<div class="container">
 
-  <h2 class="mb-3 text-center">Список фестивалей</h2>
-  <div class="container text-center mb-1 bd-highlight">
-    <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>
+<!--  <h2 class="mb-3 text-center">Список фестивалей</h2>-->
+<!--  <div class="container text-center mb-1 bd-highlight">-->
+<!--    <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>-->
+<!--  </div>-->
+
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <h4 class="mb-3 text-center">Список фестивалей</h4>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>
+    </div>
   </div>
-  <table class="table table-bordered">
+
+  <table class="table table-responsive  table-sm table-bordered table-hover">
     <thead>
     <tr>
       <th scope="col">#Id</th>
       <th scope="col">Название</th>
       <th scope="col">Действие</th>
-      <th scope="col">Создан</th>
     </tr>
     </thead>
     <tbody>
@@ -28,11 +37,12 @@
       <td>{{ fest.id }}</td>
       <td>{{ fest.name }}</td>
       <td>
-          <span class="edit btn-danger btn-sm btn" (click)="onDelete(fest.id)">Delete</span>
-        <span class="edit btn-success btn-sm btn" [routerLink]="['edit',fest.id]">Edit</span>
-      </td>
-      <td>
-        {{fest.createdAt}}
+        <div class="col-auto">
+          <button class="btn btn-primary btn-sm" [routerLink]="['edit',fest.id]">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(fest.id)">Delete</button>
+        </div>
+<!--          <span class="edit btn-danger btn-sm btn" (click)="onDelete(fest.id)">Delete</span>-->
+<!--        <span class="edit btn-success btn-sm btn" [routerLink]="['edit',fest.id]">Edit</span>-->
       </td>
     </tr>
     </tbody>

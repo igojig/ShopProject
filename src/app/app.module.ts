@@ -19,6 +19,8 @@ import { LocationRoomsComponent } from './locations/location-rooms/location-room
 import { LocationAddRoomsComponent } from './locations/location-add-rooms/location-add-rooms.component';
 import { LocationEditRoomsComponent } from './locations/location-edit-rooms/location-edit-rooms.component';
 import { EventListComponent } from './events/event-list/event-list.component';
+import { EventAddComponent } from './events/event-add/event-add.component';
+import { EventEditComponent } from './events/event-edit/event-edit.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { EventListComponent } from './events/event-list/event-list.component';
     LocationRoomsComponent,
     LocationAddRoomsComponent,
     LocationEditRoomsComponent,
-    EventListComponent
+    EventListComponent,
+    EventAddComponent,
+    EventEditComponent
   ],
   imports: [
     BrowserModule,

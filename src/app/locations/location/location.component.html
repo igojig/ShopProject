@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="mb-3 p-2" *ngIf="hallDto.length>0" >
+  <div class="col-3" *ngIf="hallDto.length>0" >
     <label for="selectHall" class="form-label text-info">Выберите концернтый зал</label>
     <select class="form-select" [size]="length"  aria-label="Multiple select example" id="selectHall"
             [(ngModel)]="selectedHallId" (ngModelChange)="onModelChange()">

@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./hall-update.component.css']
 })
 export class HallUpdateComponent implements OnInit, OnDestroy {
-  hallDto: HallDto = {};
+  hallDto: HallDto = {id: null, createdAt: null, address: '', name: ''};
   hallId: number;
   subToHallId: Subscription;
   constructor(private actRoute:ActivatedRoute, private router: Router, private rest: HallRestService) {

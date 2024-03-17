@@ -1,9 +1,10 @@
 import {FestivalDto} from "./festivalDto";
+import {LocationDto} from "./locationDto";
 
-export interface EventDto{
-  id?: number,
-  name?: string,
-  startedAt?: Date
-  // festival: FestivalDto,
-  // room: Room
+export class EventDto {
+  id: number = null;
+  name: string = null;
+  startDate: Date = null;
+  festivalDto: FestivalDto = null;
+  roomDto: LocationDto = null;
 }

@@ -18,7 +18,7 @@ export class LocationEditRoomsComponent implements OnInit, OnDestroy {
   subToLocationId: Subscription;
   subToHallId: Subscription;
 
-  locationDto:LocationDto={};
+  locationDto:LocationDto={id: null, name: '', hallDto: null};
 
   constructor(private rest: LocationRestService,
               private router: Router,
