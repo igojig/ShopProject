@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {EventDto} from "../dtos/eventDto";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {EventDto, PagableEventDto} from "../dtos/eventDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,11 @@ export class EventRestService {
 
   }
 
-  public getAll() {
-    return this.http.get<EventDto[]>(this.baseUrl);
+  public getAll(currentPage: number, recordPerPage: number) {
+    let params = new HttpParams()
+      .set('currentPage', currentPage)
+      .set('recordsPerPage', recordPerPage);
+    return this.http.get<PagableEventDto>(this.baseUrl, {params} );
   }
 
   public getById(id: number){
@@ -34,5 +37,9 @@ export class EventRestService {
 
   public deleteById(id: number){
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  public getCount(){
+    return this.http.get<number>(this.baseUrl+'/count');
   }
 }

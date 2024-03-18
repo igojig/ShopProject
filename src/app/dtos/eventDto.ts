@@ -8,3 +8,7 @@ export class EventDto {
   festivalDto: FestivalDto = null;
   roomDto: LocationDto = null;
 }
+
+export interface PagableEventDto{
+  content: EventDto[]
+}

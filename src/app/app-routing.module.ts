@@ -14,6 +14,7 @@ import {LocationAddRoomsComponent} from "./locations/location-add-rooms/location
 import {EventListComponent} from "./events/event-list/event-list.component";
 import {EventAddComponent} from "./events/event-add/event-add.component";
 import {EventEditComponent} from "./events/event-edit/event-edit.component";
+import {EventContainerComponent} from "./events/event-container/event-container.component";
 
 const routes: Routes = [
   {
@@ -62,7 +63,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'events', component: EventListComponent,
+    path: 'events', component: EventContainerComponent,
       children:[
         {path: 'add', component: EventAddComponent},
         {path: 'edit/:id', component: EventEditComponent}

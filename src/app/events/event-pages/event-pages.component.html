@@ -1,0 +1,35 @@
+<!--<p>event-pages works!</p>-->
+<section>
+  <!--  меню-->
+  <div class="row justify-content-start align-items-center">
+    <div class="col-auto align-self-end">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination ">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" *ngFor="let i of pages">
+            <a href="javascript:void(0)" class="page-link" (click)="onChangeCurrentPage(i)" [ngClass]="{ active: i==currentPage}" >{{i+1}}</a>
+          </li>
+<!--          <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--          <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!--      спискок кол-ва страниц-->
+    <div class="col-1 mb-3">
+      <select class="form-select form-select-sm" aria-label="Small select example"
+              name="selectedPage" [(ngModel)]="recordsPerPage" (ngModelChange)="onRecordsPerPageChange($event)">
+        <option selected disabled>Page</option>
+        <option *ngFor="let i of pagesArrayForSelect" [value]="i">{{i}}</option>
+      </select>
+    </div>
+  </div>
+</section>
