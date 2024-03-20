@@ -61,5 +61,6 @@ export class LocationRoomsComponent implements OnInit , OnDestroy{
 
   ngOnDestroy(): void {
     this.subToHallId.unsubscribe();
+    this.subToParam.unsubscribe();
   }
 }

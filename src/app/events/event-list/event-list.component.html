@@ -23,7 +23,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let event of eventDto?.content">
+    <tr *ngFor="let event of pageableEventDto.eventDtoList">
       <td>{{ event.id }}</td>
       <td>{{ event.name }}</td>
       <td>{{ event.startDate  | date:'dd-MM-yyyy'}}</td>

@@ -17,7 +17,7 @@ export class FestivalComponent implements OnInit {
   festivalDtos: FestivalDto[];
   subToParam: Subscription;
 
-  testEventDto: EventDto;
+  // testEventDto: EventDto;
 
   constructor(private rest: FestivalRestService,
               private router: Router,
@@ -42,7 +42,7 @@ export class FestivalComponent implements OnInit {
 
   public getFestivals() {
 
-    this.test();
+    // this.test();
 
     return this.rest.getAll().subscribe({
       next: response => {
@@ -79,10 +79,10 @@ export class FestivalComponent implements OnInit {
       );
   }
 
-  public test(){
-    this.eventRest.getById(9).subscribe(resp=>{
-      this.testEventDto=resp;
-      console.log(this.testEventDto);
-    })
-  }
+  // public test(){
+  //   this.eventRest.getById(9).subscribe(resp=>{
+  //     this.testEventDto=resp;
+  //     console.log(this.testEventDto);
+  //   })
+  // }
 }

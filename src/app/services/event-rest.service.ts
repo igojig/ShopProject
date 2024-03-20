@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {EventDto, PagableEventDto} from "../dtos/eventDto";
+import {EventDto, PageableEventDto} from "../dtos/eventDto";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class EventRestService {
     let params = new HttpParams()
       .set('currentPage', currentPage)
       .set('recordsPerPage', recordPerPage);
-    return this.http.get<PagableEventDto>(this.baseUrl, {params} );
+    return this.http.get<PageableEventDto>(this.baseUrl, {params} );
   }
 
   public getById(id: number){

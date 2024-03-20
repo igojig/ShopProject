@@ -50,7 +50,7 @@ export class LocationEditRoomsComponent implements OnInit, OnDestroy {
 
   }
   public navigateToParent(update: boolean){
-    this.router.navigate(['../../../', this.hallId],   {   queryParams: { update: update} ,relativeTo: this.actRoute });
+    this.router.navigate(['/rooms/details', this.hallId],   {   queryParams: { update: update}  });
   }
 
   public getLocation(){

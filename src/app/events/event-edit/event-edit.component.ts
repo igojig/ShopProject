@@ -99,7 +99,8 @@ export class EventEditComponent implements OnInit, OnDestroy {
     this.hallRest.getAll().subscribe(resp => {
       this.hallDto = resp;
       // this.formEventData.hallId = this.eventDto.roomDto.hallDto.id;
-      this.eventForm.controls['hallId'].setValue(this.eventDto.roomDto.hallDto.id);
+      this.eventForm.controls['hallId'].setValue(this.eventDto.roomDto.hallDto.id,
+        {emitViewToModelChange:false});
 
     })
   }

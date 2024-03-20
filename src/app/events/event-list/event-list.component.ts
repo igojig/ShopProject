@@ -1,10 +1,13 @@
 import {AfterViewInit, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {EventDto, PagableEventDto} from "../../dtos/eventDto";
+
 import {EventRestService} from "../../services/event-rest.service";
 import {ActivatedRoute} from "@angular/router";
 import {combineLatest, Subscription} from 'rxjs';
 import {EventPagesComponent} from "../event-pages/event-pages.component";
 import {PageInfoService} from "../../services/page-info.service";
+import {PageableEventDto} from "../../dtos/eventDto";
+
+
 
 
 @Component({
@@ -14,19 +17,14 @@ import {PageInfoService} from "../../services/page-info.service";
 })
 export class EventListComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
-  // eventDto: EventDto[] = [];
-  eventDto: PagableEventDto;
-  // subToUpdate: Subscription;
-  // subToPageInfo: Subscription;
+
+  pageableEventDto: PageableEventDto=new PageableEventDto();
+
   sub: Subscription;
 
-  // @ViewChild(EventPagesComponent)
-  // er: EventPagesComponent
 
-  // subToPageParams: Subscription;
-  // @Input()
   pageNo: number;
-  // @Input()
+
   recordsPerPage: number
 
   constructor(
@@ -101,8 +99,8 @@ export class EventListComponent implements OnInit, OnChanges, AfterViewInit, OnD
   private getEvents() {
     console.log("EventList:GetEvents:" + "page: " + this.pageNo + " records:" + this.recordsPerPage);
     this.restLEventService.getAll(this.pageNo, this.recordsPerPage).subscribe(res => {
-      this.eventDto = res;
-      console.log(this.eventDto);
+      this.pageableEventDto = res;
+      console.log(this.pageableEventDto);
     })
   }
 

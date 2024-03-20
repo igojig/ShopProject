@@ -21,7 +21,7 @@ export class EventPagesComponent implements OnInit, AfterViewInit{
   totalRecords: number=-1;
   recordsPerPage: number=5;
 
-  currentPage: number=1;
+  currentPage: number=0;
   pages: number[]=[];
 
   // @Output()
@@ -57,7 +57,7 @@ export class EventPagesComponent implements OnInit, AfterViewInit{
 
   private calculatePages(){
     let pagesCount=Math.ceil(this.totalRecords/this.recordsPerPage);
-    if(this.currentPage>pagesCount){
+    if(this.currentPage>=pagesCount){
       this.currentPage=pagesCount-1;
     }
     console.log("EventPage: Calculate Pages: "+pagesCount);
@@ -80,6 +80,7 @@ export class EventPagesComponent implements OnInit, AfterViewInit{
 
   public getEventsCount(){
     this.eventRest.getCount().subscribe(response=>{
+      console.log("Events count:" + response);
       this.totalRecords=response;
       this.calculatePages();
     });

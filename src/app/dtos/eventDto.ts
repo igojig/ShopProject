@@ -7,8 +7,17 @@ export class EventDto {
   startDate: Date = null;
   festivalDto: FestivalDto = null;
   roomDto: LocationDto = null;
-}
+};
 
-export interface PagableEventDto{
-  content: EventDto[]
-}
+// export interface PagableEventDto{
+//   content: EventDto[]
+// }
+
+export class PageableEventDto {
+  eventDtoList: EventDto[]=null;
+  first: boolean=null;
+  last: boolean=null;
+};
+  // private List<EventDto> eventDtoList;
+  // private boolean last;
+  // private boolean first;

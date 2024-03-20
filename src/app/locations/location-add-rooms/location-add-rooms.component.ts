@@ -57,7 +57,7 @@ export class LocationAddRoomsComponent implements OnInit, OnDestroy {
   }
 
   navigateToParent(update: boolean){
-    this.router.navigate(['../../', this.hallId],   {   queryParams: { update: update} ,relativeTo: this.actRoute });
+    this.router.navigate(['rooms/details', this.hallId],   {   queryParams: { update: update}});
   }
 
   ngOnDestroy(): void {
