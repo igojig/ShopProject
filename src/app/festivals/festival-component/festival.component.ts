@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FestivalRestService} from "../../services/festival-rest.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FestivalDto} from "../../dtos/festivalDto";
 import {Subscription} from 'rxjs';
 import {EventRestService} from "../../services/event-rest.service";
-import {EventDto} from "../../dtos/eventDto";
 
 
 @Component({
@@ -12,7 +11,8 @@ import {EventDto} from "../../dtos/eventDto";
   templateUrl: './festival.component.html',
   styleUrls: ['./festival.component.css']
 })
-export class FestivalComponent implements OnInit {
+export class FestivalComponent implements OnInit, OnDestroy {
+
 
   festivalDtos: FestivalDto[];
   subToParam: Subscription;
@@ -85,4 +85,8 @@ export class FestivalComponent implements OnInit {
   //     console.log(this.testEventDto);
   //   })
   // }
+
+  ngOnDestroy(): void {
+    this.subToParam.unsubscribe();
+  }
 }

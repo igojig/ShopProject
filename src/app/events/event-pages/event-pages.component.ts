@@ -22,7 +22,7 @@ export class EventPagesComponent implements OnInit, AfterViewInit{
   recordsPerPage: number=5;
 
   currentPage: number=0;
-  pages: number[]=[];
+  pagesList: number[]=[];
 
   // @Output()
   // pageChange: EventEmitter<PagesInfo>=new EventEmitter<PagesInfo>();
@@ -61,11 +61,11 @@ export class EventPagesComponent implements OnInit, AfterViewInit{
       this.currentPage=pagesCount-1;
     }
     console.log("EventPage: Calculate Pages: "+pagesCount);
-    this.pages=[];
+    this.pagesList=[];
     for(let i=0;i<pagesCount;i++){
-      this.pages.push(i);
+      this.pagesList.push(i);
     }
-    console.log(this.pages);
+    console.log(this.pagesList);
   }
 
   onChangeCurrentPage(i: number) {

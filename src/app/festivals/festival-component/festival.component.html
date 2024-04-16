@@ -1,19 +1,50 @@
-<!--<p>my-first-component works!</p>-->
-<!--<p >{{title}}</p>-->
-<!--<p>My data</p>-->
-<!--<div class="container border">-->
-<!--  <p>Редктирование</p>-->
-<!--  <div class="col-2 container border">-->
-<!--    <button type="button" class="btn btn-primary btn-sm">Small button</button>-->
-<!--  </div>-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-lg-12 text-center">
+      <h4>Список фестивалей</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      №
+    </div>
+    <div class="col-md-5">
+      Название
+    </div>
+    <div class="col-md-auto">
+      Действие
+    </div>
+
+  </div>
+  <!--  ряд таблицы-->
+  <div class="row" *ngFor="let fest of festivalDtos">
+    <div class="col-md-1">
+      {{ fest.id }}
+    </div>
+    <div class="col-md-5">
+      {{ fest.name }}
+    </div>
+    <div class="col-md-auto">
+      <div class="row">
+        <div class="col">
+        <button class="btn btn-primary btn-sm" [routerLink]="['edit',fest.id]">Edit</button>
+        </div>
+        <div class="col">
+        <button class="btn btn-danger btn-sm" (click)="onDelete(fest.id)">Delete</button>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <!--</div>-->
 <div class="container">
 
-<!--  <h2 class="mb-3 text-center">Список фестивалей</h2>-->
-<!--  <div class="container text-center mb-1 bd-highlight">-->
-<!--    <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>-->
-<!--  </div>-->
 
   <div class="row justify-content-center">
     <div class="col-auto">
@@ -24,125 +55,42 @@
     </div>
   </div>
 
-  <table class="table table-responsive  table-sm table-bordered table-hover">
+  <table class="table table-responsive  table-sm table-bordered table-hover caption-top">
+    <caption>
+      Список фестивалей
+      <button class="btn btn-primary btn-sm" [routerLink]="['add']">Добавить</button>
+    </caption>
     <thead>
-    <tr>
+    <tr class="row">
       <th scope="col">#Id</th>
       <th scope="col">Название</th>
-      <th scope="col">Действие</th>
+      <th scope="col" class="col-auto">Действие</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let fest of festivalDtos">
-      <td>{{ fest.id }}</td>
-      <td>{{ fest.name }}</td>
-      <td>
-        <div class="col-auto">
+    <tr *ngFor="let fest of festivalDtos" class="row">
+      <td class="col-auto">{{ fest.id }}</td>
+      <td class="col-lg-4">{{ fest.name }}</td>
+      <td class="col-auto">
+
           <button class="btn btn-primary btn-sm" [routerLink]="['edit',fest.id]">Edit</button>
           <button class="btn btn-danger btn-sm" (click)="onDelete(fest.id)">Delete</button>
-        </div>
-<!--          <span class="edit btn-danger btn-sm btn" (click)="onDelete(fest.id)">Delete</span>-->
-<!--        <span class="edit btn-success btn-sm btn" [routerLink]="['edit',fest.id]">Edit</span>-->
+
+        <!--          <span class="edit btn-danger btn-sm btn" (click)="onDelete(fest.id)">Delete</span>-->
+        <!--        <span class="edit btn-success btn-sm btn" [routerLink]="['edit',fest.id]">Edit</span>-->
       </td>
     </tr>
     </tbody>
   </table>
-<!--  <div class="d-flex align-content-center bd-highlight">-->
-<!--    <button class="btn btn-primary btn-sm" [routerLink]="['/festivals/add']">Добавить</button>-->
-<!--  </div>-->
+  <!--  <div class="d-flex align-content-center bd-highlight">-->
+  <!--    <button class="btn btn-primary btn-sm" [routerLink]="['/festivals/add']">Добавить</button>-->
+  <!--  </div>-->
 </div>
 
 <router-outlet></router-outlet>
 
 
-<!--<table class="table table-hover">-->
-<!--  <thead>-->
-<!--  <tr class="text-center">-->
-<!--    <th scope="col">#</th>-->
-<!--    <th scope="col">Название</th>-->
-<!--    <th scope="col">Action</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let fest of festivalDtos" class="text-center">-->
-<!--    <td scope="row">{{ fest.id }}</td>-->
-<!--    <td>{{ fest.name }}</td>-->
-<!--    <td class="mx-1">-->
-<!--      <button type="button" class="btn btn-primary btn-sm " (click)="onEdit(fest)">Edit</button>-->
-
-<!--      <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(fest)">Delete</button>-->
-<!--    </td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<div *ngIf="isEditable">-->
-<!--  <label for="editFestivalName">Введите новое имя:</label>-->
-<!--  <input type="text" id="editFestivalName" [(ngModel)]="editableFest.name">-->
-<!--  <button class="btn btn-primary btn-sm" (click)="onEditOk()">OK</button>-->
-<!--</div>-->
-
-<!--<div class="row g-3">-->
-<!--  <div class="col-2">-->
-<!--    <label for="staticEmail2" class="visually-hidden">Email</label>-->
-<!--    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Новый фестиваль:">-->
-<!--  </div>-->
-<!--  <div class="col-4">-->
-<!--    <label for="inputPassword2" class="visually-hidden">Password</label>-->
-<!--    <input type="text" class="form-control" id="inputPassword2" placeholder="Название" [(ngModel)]="editableFest.name">-->
-<!--  </div>-->
-<!--  <div class="col-2">-->
-<!--    <button type="submit" class="btn btn-primary mb-5" >OK</button>-->
-<!--  </div>-->
-<!--</div>-->
 
 
 
-<!--<div *ngIf="isAdded">-->
-<!--  <app-add-festival (addOkEvent)="onAddOk($event)" (addCancelEvent)="onAddCancel($event)"></app-add-festival>-->
-<!--</div>-->
 
-<!--<div *ngIf="isEditable">-->
-<!--  <app-fest-edit [fest]="editableFest" (editOkEvent)="onEditOk($event)" (editCancelEvent)="onEditCacel($event)"></app-fest-edit>-->
-<!--</div>-->
-
-<!--<div class="container  mb-5">-->
-<!--<div class="col-md-7">-->
-<!--  <h3 class="mb-1 text-center text-info">Create Employee</h3>-->
-
-<!--  <div class="mb-3 ">-->
-<!--    <input type="text"  class="form-control" placeholder="Name">-->
-<!--  </div>-->
-
-<!--  <div class="mb-3 ">-->
-<!--    <input type="text"  class="form-control" placeholder="Email">-->
-<!--  </div>-->
-
-<!--  <div class="mb-3 ">-->
-<!--    <input type="text"  class="form-control" placeholder="Phone">-->
-<!--  </div>-->
-
-<!--  <div class="form-group">-->
-<!--    <button class="btn btn-success btn-sm btn-block" >Create Employee</button>-->
-<!--  </div>-->
-
-<!--</div>-->
-<!--</div>-->
-
-
-<!--<table class='table'>-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>ID</th>-->
-<!--    <th>Name</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let repo of repos;">-->
-<!--    <td>{{repo.id}}</td>-->
-<!--    <td>{{repo.name}}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<pre>{{repos | json}}</pre>-->
